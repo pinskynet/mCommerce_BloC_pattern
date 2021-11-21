@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pin_shop/model/product_model.dart';
 
-import 'product_card.dart';
+import '../../../export_files.dart';
 
 class ProductCarousel extends StatelessWidget {
   final List<ProductModel> products;

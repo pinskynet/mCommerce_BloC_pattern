@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pin_shop/export_files.dart';
 import 'home_components/body.dart';
-import 'home_components/custom_app_bar.dart';
-import 'home_components/custom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/';

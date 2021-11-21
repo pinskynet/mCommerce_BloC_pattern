@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pin_shop/UI/home/home_components/custom_app_bar.dart';
-import 'package:pin_shop/UI/home/home_components/custom_nav_bar.dart';
+import 'package:pin_shop/export_files.dart';
 
 class WishlistScreen extends StatelessWidget {
   static const String routeName = '/wishlist_screen';
