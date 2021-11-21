@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_shop/export_files.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_app_bar.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_nav_bar.dart';
 import 'home_components/body.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_shop/UI/home/home_components/section_title.dart';
+import 'package:pin_shop/model/category_model.dart';
+import 'package:pin_shop/model/product_model.dart';
+import 'package:pin_shop/ui/global_components/carousel/hero_carousel_card.dart';
 
-import '../../../export_files.dart';
-import 'hero_carousel_card.dart';
 import 'product_carousel.dart';
 
 class Body extends StatelessWidget {

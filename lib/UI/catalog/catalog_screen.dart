@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pin_shop/export_files.dart';
+import 'package:pin_shop/model/category_model.dart';
+import 'package:pin_shop/model/product_model.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_app_bar.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_nav_bar.dart';
 
 import 'catalog_components/body.dart';
 

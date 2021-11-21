@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'export_files.dart';
+
+import 'UI/home/home_screen.dart';
+import 'configs/app_router.dart';
+import 'configs/theme.dart';
 
 void main() {
   runApp(const MyApp());
