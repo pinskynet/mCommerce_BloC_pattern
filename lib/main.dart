@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pin_shop/bloc/wishlist/wishlist_bloc.dart';
 import 'UI/home/home_screen.dart';
 import 'configs/app_router.dart';
 import 'configs/theme.dart';
@@ -15,12 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pin Shop',
-      debugShowCheckedModeBanner: false,
-      theme: theme(),
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: HomeScreen.routeName,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
+      ],
+      child: MaterialApp(
+        title: 'Pin Shop',
+        debugShowCheckedModeBanner: false,
+        theme: theme(),
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: HomeScreen.routeName,
+      ),
     );
   }
 }
