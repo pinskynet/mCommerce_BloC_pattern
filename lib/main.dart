@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_shop/bloc/wishlist/wishlist_bloc.dart';
 import 'UI/home/home_screen.dart';
+import 'bloc/cart/cart_bloc.dart';
 import 'configs/app_router.dart';
 import 'configs/theme.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
+        BlocProvider(create: (_) => CartBloc()..add(StartCart())),
       ],
       child: MaterialApp(
         title: 'Pin Shop',

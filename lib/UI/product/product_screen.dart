@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pin_shop/bloc/cart/cart_bloc.dart';
 import 'package:pin_shop/bloc/wishlist/wishlist_bloc.dart';
 import 'package:pin_shop/model/product_model.dart';
 import 'package:pin_shop/ui/global_components/carousel/hero_carousel_card.dart';
@@ -61,17 +62,24 @@ class ProductScreen extends StatelessWidget {
                   );
                 },
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                child: Text(
-                  'ADD TO CART',
-                  style: Theme.of(context).textTheme.headline3!.copyWith(
-                        color: Colors.black,
-                      ),
-                ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      context.read<CartBloc>().add(AddCart(product));
+                      Navigator.pushNamed(context, '/cart_screen');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: Text(
+                      'ADD TO CART',
+                      style: Theme.of(context).textTheme.headline3!.copyWith(
+                            color: Colors.black,
+                          ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
