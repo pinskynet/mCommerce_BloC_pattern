@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class ProductModel extends Equatable {
@@ -26,6 +27,19 @@ class ProductModel extends Equatable {
         isRecommended,
         isPopular,
       ];
+
+  static ProductModel fromSnapshot(DocumentSnapshot snapshot) {
+    ProductModel product = ProductModel(
+      name: snapshot['name'],
+      category: snapshot['category'],
+      imgUrl: snapshot['imageUrl'],
+      price: snapshot['price'],
+      isRecommended: snapshot['isRecommended'],
+      isPopular: snapshot['isPopular'],
+    );
+    
+    return product;
+  }
 
   static List<ProductModel> products = [
     const ProductModel(

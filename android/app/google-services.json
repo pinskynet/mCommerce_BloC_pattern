@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "158260880634",
+    "project_id": "pin-shop-app",
+    "storage_bucket": "pin-shop-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158260880634:android:7d7dc189fe77bf5b9c1543",
+        "android_client_info": {
+          "package_name": "com.example.pin_shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158260880634-kmkrm9ie3vv8t0sr4gss8gk0cv3snabb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAILFVWlEdSDluhygH6Z-Wf40ysfJ4bMU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158260880634-kmkrm9ie3vv8t0sr4gss8gk0cv3snabb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
