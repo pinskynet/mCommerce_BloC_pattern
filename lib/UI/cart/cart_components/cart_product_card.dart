@@ -5,10 +5,12 @@ import 'package:pin_shop/model/product_model.dart';
 
 class CartProductCard extends StatelessWidget {
   final ProductModel product;
+  final int quantity;
 
   const CartProductCard({
     Key? key,
     required this.product,
+    required this.quantity,
   }) : super(key: key);
 
   @override
@@ -55,7 +57,7 @@ class CartProductCard extends StatelessWidget {
                     icon: const Icon(Icons.add_circle),
                   ),
                   Text(
-                    '1',
+                    '$quantity',
                     style: Theme.of(context).textTheme.headline5!.copyWith(
                           color: Colors.black,
                         ),

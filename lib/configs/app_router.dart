@@ -5,6 +5,7 @@ import 'package:pin_shop/ui/cart/cart_screen.dart';
 import 'package:pin_shop/ui/catalog/catalog_screen.dart';
 import 'package:pin_shop/ui/home/home_screen.dart';
 import 'package:pin_shop/ui/product/product_screen.dart';
+import 'package:pin_shop/ui/splash/splash_screen.dart';
 import 'package:pin_shop/ui/wishlist/wishlist_screen.dart';
 
 class AppRouter {
@@ -12,6 +13,8 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return HomeScreen.route();
+      case '/splash_screen':
+        return SplashScreen.route();
       case '/cart_screen':
         return CartScreen.route();
       case '/catalog_screen':
