@@ -6,6 +6,7 @@ import 'package:pin_shop/bloc/wishlist/wishlist_bloc.dart';
 import 'package:pin_shop/model/product_model.dart';
 import 'package:pin_shop/ui/global_components/carousel/hero_carousel_card.dart';
 import 'package:pin_shop/ui/global_components/custom_bar/custom_app_bar.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_nav_bar.dart';
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = '/product_screen';
@@ -30,60 +31,9 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: product.name),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
-        child: SizedBox(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                  color: Colors.white,
-                ),
-              ),
-              BlocBuilder<WishlistBloc, WishlistState>(
-                builder: (context, state) {
-                  return IconButton(
-                    onPressed: () {
-                      context.read<WishlistBloc>().add(AddWishlist(product));
-
-                      const snackBar =
-                          SnackBar(content: Text('Added to your wishlist.'));
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    },
-                    icon: const Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    ),
-                  );
-                },
-              ),
-              BlocBuilder<CartBloc, CartState>(
-                builder: (context, state) {
-                  return ElevatedButton(
-                    onPressed: () {
-                      context.read<CartBloc>().add(AddCart(product));
-                      Navigator.pushNamed(context, '/cart_screen');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                    ),
-                    child: Text(
-                      'ADD TO CART',
-                      style: Theme.of(context).textTheme.headline3!.copyWith(
-                            color: Colors.black,
-                          ),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+      bottomNavigationBar: CustomNavBar(
+        screen: routeName,
+        product: product,
       ),
       body: ListView(
         children: [

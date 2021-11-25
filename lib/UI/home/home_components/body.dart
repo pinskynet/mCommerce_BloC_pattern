@@ -13,94 +13,96 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<CategoryBloc, CategoryState>(
-          builder: (context, state) {
-            if (state is CategoryLoading) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                ),
-              );
-            } else if (state is CategoryLoaded) {
-              return CarouselSlider(
-                options: CarouselOptions(
-                  aspectRatio: 1.5,
-                  viewportFraction: 0.9,
-                  enlargeCenterPage: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                ),
-                items: state.categories
-                    .map((category) => HeroCarouselCard(category: category))
-                    .toList(),
-              );
-            } else {
-              return Center(
-                child: Text(
-                  'Something Went Wrong',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: Colors.black),
-                ),
-              );
-            }
-          },
-        ),
-        const SectionTitle(title: 'RECOMMENDED'),
-        BlocBuilder<ProductBloc, ProductState>(
-          builder: (context, state) {
-            if (state is ProductLoading) {
-              return const Center(
-                child: CircularProgressIndicator(color: Colors.black),
-              );
-            } else if (state is ProductLoaded) {
-              return ProductCarousel(
-                products: state.products
-                    .where((product) => product.isRecommended)
-                    .toList(),
-              );
-            } else {
-              return Center(
-                child: Text(
-                  'Something Went Wrong',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: Colors.black),
-                ),
-              );
-            }
-          },
-        ),
-        const SectionTitle(title: 'POPULAR'),
-        BlocBuilder<ProductBloc, ProductState>(
-          builder: (context, state) {
-            if (state is ProductLoading) {
-              return const Center(
-                child: CircularProgressIndicator(color: Colors.black),
-              );
-            } else if (state is ProductLoaded) {
-              return ProductCarousel(
-                products: state.products
-                    .where((product) => product.isPopular)
-                    .toList(),
-              );
-            } else {
-              return Center(
-                child: Text(
-                  'Something Went Wrong',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: Colors.black),
-                ),
-              );
-            }
-          },
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          BlocBuilder<CategoryBloc, CategoryState>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                );
+              } else if (state is CategoryLoaded) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    aspectRatio: 1.5,
+                    viewportFraction: 0.9,
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                  ),
+                  items: state.categories
+                      .map((category) => HeroCarouselCard(category: category))
+                      .toList(),
+                );
+              } else {
+                return Center(
+                  child: Text(
+                    'Something Went Wrong',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1!
+                        .copyWith(color: Colors.black),
+                  ),
+                );
+              }
+            },
+          ),
+          const SectionTitle(title: 'RECOMMENDED'),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(color: Colors.black),
+                );
+              } else if (state is ProductLoaded) {
+                return ProductCarousel(
+                  products: state.products
+                      .where((product) => product.isRecommended)
+                      .toList(),
+                );
+              } else {
+                return Center(
+                  child: Text(
+                    'Something Went Wrong',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1!
+                        .copyWith(color: Colors.black),
+                  ),
+                );
+              }
+            },
+          ),
+          const SectionTitle(title: 'POPULAR'),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(color: Colors.black),
+                );
+              } else if (state is ProductLoaded) {
+                return ProductCarousel(
+                  products: state.products
+                      .where((product) => product.isPopular)
+                      .toList(),
+                );
+              } else {
+                return Center(
+                  child: Text(
+                    'Something Went Wrong',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1!
+                        .copyWith(color: Colors.black),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }

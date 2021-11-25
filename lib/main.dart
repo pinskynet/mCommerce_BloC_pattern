@@ -3,7 +3,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pin_shop/bloc/checkout/checkout_bloc.dart';
 import 'package:pin_shop/bloc/wishlist/wishlist_bloc.dart';
+import 'package:pin_shop/repository/checkout/base_checkout_repository.dart';
+import 'package:pin_shop/ui/checkout/checkout_screen.dart';
 import 'bloc/cart/cart_bloc.dart';
 import 'bloc/category/category_bloc.dart';
 import 'bloc/product/product_bloc.dart';
@@ -26,15 +29,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
-        BlocProvider(create: (_) => CartBloc()..add(StartCart())),
         BlocProvider(
-            create: (_) =>
-                CategoryBloc(categoryRepository: CategoryRepository())
-                  ..add(LoadCategories())),
+          create: (_) => WishlistBloc()..add(StartWishlist()),
+        ),
         BlocProvider(
-            create: (_) => ProductBloc(productRepository: ProductRepository())
-              ..add(LoadProducts())),
+          create: (_) => CartBloc()..add(StartCart()),
+        ),
+        BlocProvider(
+          create: (_) => CategoryBloc(
+            categoryRepository: CategoryRepository(),
+          )..add(LoadCategories()),
+        ),
+        BlocProvider(
+          create: (_) => ProductBloc(
+            productRepository: ProductRepository(),
+          )..add(LoadProducts()),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(
+            cartBloc: context.read<CartBloc>(),
+            checkoutRepository: CheckoutRepository(),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Pin Shop',

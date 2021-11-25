@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_shop/bloc/cart/cart_bloc.dart';
 import 'package:pin_shop/ui/global_components/custom_bar/custom_app_bar.dart';
+import 'package:pin_shop/ui/global_components/custom_bar/custom_nav_bar.dart';
+import 'package:pin_shop/ui/global_components/oder/order_summary.dart';
 
 import 'cart_components/cart_product_card.dart';
 
@@ -22,29 +24,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Cart'),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                child: Text(
-                  'GO TO CHECKOUT',
-                  style: Theme.of(context).textTheme.headline3!.copyWith(
-                        color: Colors.black,
-                      ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: CustomNavBar(screen: routeName),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state is CartLoading) {
@@ -114,111 +94,7 @@ class CartScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Divider(thickness: 2),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 40.0,
-                            vertical: 10.0,
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'SUBTOTAL',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                          color: Colors.black,
-                                        ),
-                                  ),
-                                  Text(
-                                    '\$ ${state.cart.subtotal}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                          color: Colors.black,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'DELIVERY',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                          color: Colors.black,
-                                        ),
-                                  ),
-                                  Text(
-                                    '\$ ${state.cart.deliveryFeeString}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                          color: Colors.black,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Stack(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: Colors.black.withAlpha(50),
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: const EdgeInsets.all(5),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 30.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'TOTAL',
-                                      style:
-                                          Theme.of(context).textTheme.headline4,
-                                    ),
-                                    Text(
-                                      '\$ ${state.cart.totalString}',
-                                      style:
-                                          Theme.of(context).textTheme.headline4,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  OrderSummary(),
                 ],
               ),
             );
